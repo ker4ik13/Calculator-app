@@ -31,8 +31,25 @@ clear.addEventListener('click', () => {
     clearAll();
 })
 
+
+resultField.addEventListener('click', () => {
+    if(a !== '' && b === ''){
+        a = a.slice(0, -1);
+        resultField.innerHTML = a;
+        console.log(a);
+    }
+    if(b !== '' && a !== ''){
+        b = b.slice(0, -1);
+        resultField.innerHTML = b;
+        console.log(a);
+    }
+})
+
+
 container.addEventListener('click', (event) => {
     const key = event.target.textContent;
+
+    
 
     if(!event.target.classList.contains('calc__button')) return;
     if(event.target.classList.contains('clear')) return;
@@ -54,9 +71,9 @@ container.addEventListener('click', (event) => {
             b = key;
             finish = false;
             resultField.innerHTML = b;
-        } /* else if(a !== '' && b !== '' && sign !== ''){
-
-        } */else {
+        } else if((a === '' || a === '0') && b === ''){
+            resultField.innerHTML = '0';
+        } else {
             b += key;
             resultField.innerHTML = b;
         }
@@ -65,12 +82,16 @@ container.addEventListener('click', (event) => {
         // Если нажаты + - / *
      if(action.includes(key)){
         sign = key;
-        resultField.innerHTML = b;
+        resultField.innerHTML = a;
 
         for(let i = 0; i < container.children.length; i++){
             container.children[i].classList.remove('active');
         }
         event.target.classList.add('active');
+        if(a !== '' && b !== '' && sign !== ''){
+            sign = key;
+            resultField.innerHTML = a;
+        }
         return;
     }  
     // Равно
@@ -97,6 +118,9 @@ container.addEventListener('click', (event) => {
             case 'x':
                 a = (a * b);
                 break;
+        }
+        for(let i = 0; i < container.children.length; i++){
+            container.children[i].classList.remove('active');
         }
         finish = true;
         resultField.innerHTML = a;
