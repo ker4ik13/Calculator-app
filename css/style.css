@@ -17,7 +17,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
 /*--------------------*/
 
 body{
-    background-color: #444;
+    background-color: #111;
     font-family: Arial, Helvetica, sans-serif;
     overflow: hidden;
     font-weight: 700;
@@ -33,7 +33,7 @@ body{
     padding: 20px;
 }
 .wrapper {
-    max-width: 370px;
+    max-width: 450px;
     width: 100%;
     background-color: #111;
     border-radius: 20px;
@@ -56,8 +56,8 @@ body{
 
 .container {
     display: grid;
-    grid-template-rows: repeat(5, 70px);
-    grid-template-columns: repeat(4, 70px);
+    grid-template-rows: repeat(5, 90px);
+    grid-template-columns: repeat(4, 90px);
     padding: 20px;
     gap: 15px;
     margin: 0 auto;
@@ -70,26 +70,19 @@ body{
 
 /* Buttons */
 
-.clear {
-    grid-area: clear;
-}
-
 .calc__button {
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
     background-color: #313131;
     border-radius: 50px;
     cursor: pointer;
-    font-size: 26px;
+    font-size: 36px;
     overflow: hidden;
     transition: all .1s linear;
-}
-.calc__button img{
-    width: 22px;
 }
 .control__button {
     font-size: 26px;
@@ -102,19 +95,13 @@ body{
 .plus__minus{
     grid-area: plus-minus;
 }
-.plus__minus  img{
-    width: 30px;
-}
 .percent {
     font-size: 30px;
     grid-area: percent;
 }
 .division{
     grid-area: division;
-    font-size: 36px;
-}
-.division  img{
-    width: 36px;
+    font-size: 50px;
 }
 .orange__button {
     background-color: #F69906;
@@ -125,6 +112,10 @@ body{
 .orange__button.active{
     background-color: #eee;
     color: #F69906;
+}
+.clear {
+    grid-area: clear;
+    font-size: 34px;
 }
 .seven {
     grid-area: seven;
@@ -139,7 +130,7 @@ body{
     grid-area: nine;
 }
 .mult {
-    font-size: 30px;
+    font-size: 40px;
     grid-area: mult;
 }
 .four {
@@ -165,12 +156,12 @@ body{
     grid-area: three;
 }
 .plus {
-    font-size: 40px;
+    font-size: 50px;
     grid-area: plus;
 }
 .zero {
     grid-area: zero;
-    width: 160px;
+    width: 195px;
     justify-content: start;
     padding-left: 25px;
     grid-area: zero;
@@ -188,44 +179,48 @@ body{
 
 
 @media(max-width: 450px){
+    .page{
+        padding: 10px;
+    }
     .result__field{
-        height: 17vh;
+        height: 20vh;
         padding: 0 15px 0 10px;
+        font-size: 20vw;
     }
     .wrapper{
-        max-width: 300px;
+        max-width: 100%;
         height: auto;
     }
     .calc__button{
-        width: 60px;
-        height: 60px;
-        font-size: 20px;
+        width: 20vw;
+        height: 20vw;
+        font-size: 10vw;
     }
     .container{
         gap: 12px;
         padding: 10px;
-        grid-template-columns: repeat(5, 60px);
-        grid-template-rows: repeat(4, 60px);
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(5, 1fr);
     }
     .zero {
-        width: 122px;
+        width: calc(40vw + 12px);
         justify-content: start;
         padding-left: 25px;
     }
-    .calc__button img{
-        width: 20px;
-    }
-    .division  img{
-        width: 30px;
+    .division{
+        font-size: 12vw;
     }
     .minus{
         font-weight: 900;
-        font-size: 26px;
+        font-size: 12vw;
     }
     .plus{
         font-size: 30px;
     }
-    .mult img{
-        width: 18px;
+    .mult{
+        font-size: 12vw;
+    }
+    .plus{
+        font-size: 12vw;
     }
 }
