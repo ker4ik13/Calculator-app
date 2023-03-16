@@ -71,7 +71,7 @@ container.addEventListener('click', (event) => {
             }
             event.target.classList.add('active');
         } else if (a!== '' && b!== '' && finish){
-            b = key;
+            b += key;
             finish = false;
             resultField.innerHTML = b;
         } else if((a === '' || a === '0') && b === ''){
@@ -150,10 +150,14 @@ container.addEventListener('click', (event) => {
 
             // Вычисления /
         if(sign === '÷'){
+            for(let i = 0; i < container.children.length; i++){
+                container.children[i].classList.remove('active');
+            }
+            event.target.classList.add('active');
             if(a !=='' && b === ''){
                 resultField.innerHTML = a;
                 a = Number(a);
-            } else if(sa !=='' && b !== ''){
+            } else if(a !=='' && b !== ''){
                 a = Number(a) / Number(b);
                 resultField.innerHTML = a;
                 b = '';
@@ -182,7 +186,9 @@ container.addEventListener('click', (event) => {
      
     // Равно
     if(key === '═'){
-        if(b==='') b = a;
+        if(a === '' || a === '0'){
+            resultField.innerHTML = '0';
+        } else if(b ==='') b = a;
         switch(sign){
             case '+':
                 a = (+a) + (+b);
